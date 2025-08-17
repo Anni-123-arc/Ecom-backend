@@ -43,9 +43,7 @@ dbConnection();
 
 // Security & middleware
 app.use(helmet());
-app.use(cors({
-  origin: process.env.CORS_ORIGIN || "*"
-}));
+app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
