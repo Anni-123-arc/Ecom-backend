@@ -36,14 +36,18 @@ import { deleteProdRoute } from "./routes/deleteProd.js";
 import { updateProdRouter } from "./routes/updateProd.js";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const allowedOrigin = ['https://ecom-team-1b.netlify.app' , 'http://localhost:4200'];
 
 // Connect to database
 dbConnection();
 
 // Security & middleware
 app.use(helmet());
-app.use(cors());
+app.use(cors(
+  {
+    origin: allowedOrigin
+  }
+));
 app.use(express.json());
 app.use(morgan("dev"));
 
