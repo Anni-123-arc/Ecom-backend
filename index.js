@@ -37,7 +37,7 @@ import { updateProdRouter } from "./routes/updateProd.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const allowedOrigin = ['https://ecom-team-1b.netlify.app' , 'http://localhost:4200'];
+const allowedOrigin = ['https://ecom-team-1b.netlify.app' , 'http://localhost:4200' ];
 
 // Connect to database
 dbConnection();
@@ -60,6 +60,7 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // API routes
+app.use('/' , express.static("public"));
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/address", addressRoutes);
@@ -74,10 +75,12 @@ app.use('/api', updateProdRouter);
 app.use('/api', sendMsg);
 
 // Health check
-app.get("/", (req, res) => res.json({ status: "ok" }));
+app.get("/",  (req, res) => {
+  res.status(200).json({ message: "API is running" });
+});
 
 // Global error handler
-app.use((err, req, res, next) => {
+app.use((err,  req, res, next) => {
   console.error(err);
   res.status(500).json({ message: "Server error" });
 });
