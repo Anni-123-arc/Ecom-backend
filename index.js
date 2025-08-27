@@ -37,7 +37,12 @@ import { updateProdRouter } from "./routes/updateProd.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const allowedOrigin = ['https://ecom-team-1b.netlify.app' , 'http://localhost:4200' ];
+//added allowed origin for our applocation
+const allowedOrigin = [
+                       'https://ecom-team-1b.netlify.app', 
+                       'https://ecom-1b-team.netlify.app' , 
+                       'http://localhost:4200' 
+                      ];
 
 // Connect to database
 dbConnection();
