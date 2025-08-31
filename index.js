@@ -41,7 +41,8 @@ const PORT = process.env.PORT || 3000;
 const allowedOrigin = [
                        'https://ecom-team-1b.netlify.app', 
                        'https://ecom-1b-team.netlify.app' , 
-                       'http://localhost:4200' 
+                       'http://localhost:4200',	
+		       'http://localhost:8080'
                       ];
 
 // Connect to database
